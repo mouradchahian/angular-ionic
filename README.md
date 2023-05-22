@@ -18,6 +18,7 @@ important parts :
 - Java 8
 - Maven
 - Angular ionic
+- Capacitor
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:

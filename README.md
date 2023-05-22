@@ -15,8 +15,9 @@ important parts :
 - Capacitor 4 or later
 
 # Technologies 
-- Android studio
+- Java 8
 - Maven
+- Angular ionic
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:

@@ -9,7 +9,6 @@ important parts :
 - location service
 
 # Pre-requisites
-#
 - JDK 1.8 or later
 - Maven 3 or later
 - Capacitor 4 or later
@@ -19,6 +18,13 @@ important parts :
 - Maven
 - Angular ionic
 - Capacitor
+
+# Tools
+- Android studio
+- Visuel studio
+- npm 
+- ionic cli
+- Github
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:

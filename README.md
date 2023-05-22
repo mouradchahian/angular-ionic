@@ -1,5 +1,6 @@
 # ionic app mobile using capacitor angular
 this project is a rent car application that makes reserveration easer and managable.
+
 important parts : 
 - notification service
 - contact service

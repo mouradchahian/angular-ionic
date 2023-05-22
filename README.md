@@ -18,6 +18,7 @@ important parts :
 - Maven
 - Angular ionic
 - Capacitor
+- Symfony
 
 # Tools
 - Android studio
@@ -25,6 +26,10 @@ important parts :
 - npm 
 - ionic cli
 - Github
+- Post man
+- Json server
+- Apache
+
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:

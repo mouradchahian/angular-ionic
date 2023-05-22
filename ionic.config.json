@@ -1,0 +1,8 @@
+{
+  "name": "jidorCar",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

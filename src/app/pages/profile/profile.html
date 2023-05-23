@@ -1,0 +1,74 @@
+<!--<ion-header
+  class="md header-md header-collapse-none hydrated sticky iion-header"
+>
+  <ion-toolbar class="toolbar-title-default v-toolbar iion-toolbar">
+    <ion-avatar slot="start">
+      <img src="assets/img/profile.png" class="img-profile" />
+    </ion-avatar>
+    <ion-title> Bonjour, Chahian </ion-title>
+    <ion-label class="toolbar-description"> Trouvez vos special car </ion-label>
+    <ion-icon slot="end" name="notifications" class="notification-header"></ion-icon>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-header
+  class="md header-md header-collapse-none hydrated sticky iion-header header-height profile"
+>
+  <ion-toolbar class="toolbar-title-default v-toolbar iion-toolbar center-position-header">
+    <ion-avatar class="center-header-img">
+      <img [src]="uploadedImage" class="img-profile-center" />
+    </ion-avatar>
+    <ion-title class="color-title-center"> Bonjour, {{user.nom}} </ion-title>
+    <ion-label class="toolbar-description mini-title-center"> +212 {{user.tel}} </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class=" profile"> 
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+    <ion-accordion-group>
+        <ion-accordion value="first" [routerLink]="'/user/profile/edit'">
+          <ion-item slot="header">
+            <ion-label>Modifier mon compte</ion-label>
+            <ion-icon slot="end" name="person"></ion-icon>
+          </ion-item>
+        </ion-accordion>
+        <ion-accordion value="second" [routerLink]="'/user/reservation'">
+          <ion-item slot="header">
+            <ion-label>Mes reservations</ion-label>
+            <ion-icon slot="end" name="calendar"></ion-icon>
+          </ion-item>
+        </ion-accordion>
+        <ion-accordion value="third" [routerLink]="'/user/notifications'">
+          <ion-item slot="header">
+            <ion-label>Mes notifications</ion-label>
+            <ion-icon slot="end" name="notifications"></ion-icon>
+          </ion-item>
+        </ion-accordion>
+        <ion-accordion value="fourth" [routerLink]="'/filter'">
+            <ion-item slot="header">
+              <ion-label>Mon filtre</ion-label>
+              <ion-icon slot="end" name="funnel"></ion-icon>
+            </ion-item>
+        </ion-accordion>
+
+        <ion-accordion value="third" [routerLink]="'/admin/cars'" *ngIf="user.role == 'admin'">
+            <ion-item slot="header">
+              <ion-label>Gestion des voitures</ion-label>
+              <ion-icon slot="end" name="car-outline"></ion-icon>
+            </ion-item>
+        </ion-accordion>
+
+        <ion-accordion value="third" (click)="deconnecter()">
+            <ion-item slot="header">
+              <ion-label>Se déconnecter</ion-label>
+              <ion-icon slot="end" name="power-outline"></ion-icon>
+            </ion-item>
+        </ion-accordion>
+
+      </ion-accordion-group>
+
+</ion-content>

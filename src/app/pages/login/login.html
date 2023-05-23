@@ -1,0 +1,70 @@
+<ion-header class="box-shadow">
+  <ion-toolbar class="padding">
+    <ion-icon name="close" class="close-icon" slot="start" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar class="padding-top-5">
+    <ion-title> Se connecter</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-content-white form-formulaire">
+
+  <div class="center">
+    <img src="assets/img/logo.png" class="img-center" />
+  </div>
+<form [formGroup]="userForm" (ngSubmit)="onLogin()">
+  <ion-row>
+    <ion-col size="12" class="remove-padding">
+      <ion-item class="ion-content-white">
+        
+        <ion-input
+          placeholder="Utilisateur"
+          class="custom-input-login"
+          formControlName="username"
+          required
+        ></ion-input>
+        <ion-icon
+          class="icon"
+          name="person-outline"
+          class="icon-right-login"
+          item-right
+        ></ion-icon>
+      </ion-item>
+    </ion-col>
+    <ion-col size="12" class="remove-padding">
+      <ion-item class="ion-content-white">
+        <ion-input
+          placeholder="Mot de passe"
+          class="custom-input-login"
+          type="password"
+          formControlName="password"
+          (keyup.enter)="onLogin()"
+          required
+        ></ion-input>
+        <ion-icon
+          class="icon"
+          name="lock-closed"
+          class="icon-right-login"
+          item-right
+        ></ion-icon>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <a href="" class="a-login">
+        <ion-icon name="key" class="key-login"></ion-icon> Mot de passe oublié
+      </a>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="padding-15">
+      <ion-button class="ion-bttom-appl4" [disabled]="!userForm.valid" type="submit"><ion-icon name="log-in" class="ico-login"></ion-icon> Se connecter</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="padding-right-left-15">
+      <ion-button class="ion-bttom-appl3" (click)="openRegisterModal()"><ion-icon name="person-add" class="ico-login-font"></ion-icon> Créer Compte</ion-button>
+    </ion-col>
+  </ion-row>
+</form>
+</ion-content>

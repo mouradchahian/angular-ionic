@@ -1,0 +1,67 @@
+<ion-content class="background">
+  <div class="contact">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <ion-card class="d-description background-login">
+        <div class="center">
+          <img src="assets/img/icon-login.png" class="img-center" />
+        </div>
+        <ion-card-header>
+          <ion-card-title class="d-description-title">
+            <h4>Se Connecter</h4>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col size="12" class="remove-padding">
+              <ion-item>
+                <ion-icon
+                  class="icon"
+                  name="person-outline"
+                  item-right
+                ></ion-icon>
+                <ion-input
+                  placeholder="Username"
+                  formControlName="name"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" class="remove-padding">
+              <ion-item>
+                <ion-icon
+                  class="icon"
+                  name="lock-closed"
+                  item-right
+                ></ion-icon>
+                <ion-input
+                  placeholder="Password"
+                  formControlName="email"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <a href="" class="a-login">
+                <ion-icon name="key" class="key-login"></ion-icon> Mot de passe oublié
+              </a>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="remove-padding">
+              <ion-button class="ion-bttom-appl4"><ion-icon name="log-in" class="ico-login"></ion-icon> Login</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="remove-padding">
+              <ion-button class="ion-bttom-appl3"><ion-icon name="person-add" class="ico-login-font"></ion-icon> Créer Compte</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+    <br />
+  </div>
+
+</ion-content>

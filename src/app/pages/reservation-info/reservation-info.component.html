@@ -1,0 +1,60 @@
+<ion-header class="box-shadow">
+  <ion-toolbar class="padding">
+    <ion-icon
+      name="close"
+      class="close-icon"
+      slot="start"
+      (click)="closeModal()"
+    ></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar class="padding-top-5">
+    <ion-title> Detail reservation</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-content-white">
+  <div class="center">
+    <img src="assets/img/logo.png" class="img-center" />
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <img [src]="item.image" />
+      </ion-col>
+      <ion-col size="12" size-md="6" class="padding-5-15">
+        <h2>{{ item.car.title }}</h2>
+        <ion-row class="p-b-5">
+          <ion-col size="12">
+            <ion-icon class="icon icon-det" name="calendar-outline"></ion-icon>
+            <ion-text class="font-date text-det">
+              {{ item.date }}
+            </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon class="icon icon-det" name="calendar"></ion-icon>
+            <ion-text class="font-date text-det">{{ item.creation | date:'dd MMM yyyy HH:mm'}}</ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon [name]="getStatusIcon(item.status)"  class="icon icon-det"></ion-icon>
+            <ion-text class="font-date text-det">{{ item.status }}</ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon name="person-outline"  class="icon icon-det"></ion-icon>
+            <ion-text class="font-date text-det">M. {{ item.nom }} {{ item.prenom }}</ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon name="mail-outline"  class="icon icon-det"></ion-icon>
+            <ion-text class="font-date text-det">{{ item.email }} </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon name="cash" class="icon icon-det"></ion-icon>
+            <ion-text class="font-date text-det">{{ item.car.price }} DH</ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <ion-icon name="call-outline"  class="icon icon-det"></ion-icon>
+            <ion-text class="font-date text-det"><button class="call-tel" (click)="openDialer(item.tel)">+212 {{ item.tel }}</button> </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

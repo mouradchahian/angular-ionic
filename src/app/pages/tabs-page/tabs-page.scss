@@ -1,0 +1,99 @@
+.tabbar {
+  justify-content: center;
+}
+
+.tab-button {
+  max-width: 200px;
+}
+
+::ng-deep ion-icon.icon-button {
+  background: var(--ion-color-primary-tint)!important;
+  color: white;
+  border-radius: 50%!important;
+}
+
+
+
+.bottom-tab-bar {
+  --background: transparent;
+  --border: 0;
+}
+
+ion-tab-button {
+  --background: #ffffff;
+  color: #686868;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.8px;
+  --color-selected: white;
+}
+
+.button-center {
+  --background: transparent!important;
+  ion-icon {
+    height: 50px;
+    width: 50px;
+    font-size: 75px;
+  }
+}
+
+ion-tab-bar {
+  &:before {
+    position: absolute;
+    margin-top: -48px;
+    padding: 56px;
+    border-radius: 65%;
+    content: '';
+  }
+}
+
+.inner-left-btn {
+  border-radius: 0 39% 0 0; // create the curved style on the left side of the center
+}
+
+.inner-right-btn {
+  border-radius: 39% 0 0 0; // create the curved style on the right side of the center
+}
+
+.inner-center-btn {
+  position: absolute;
+  left: calc(50% - 35px); // position your button in the center
+  bottom: 20px; // position your button slightly above the half bezel
+  font-size: 70px;
+  --background: transparent;
+}
+
+.fab-vertical-bottom{
+  border: 7px solid rgb(254 254 254);
+  border-radius: 50%;
+  position: ABSOLUTE;
+  left: 48%;
+  filter: drop-shadow(2px -27px 31px rgb(195 195 195 / 39%));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=2, Color='#444')";
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=0, OffY=2, Color='#444')";
+}
+
+ion-fab-button .button-inner{
+  background-color: var(--theme-color);
+}
+ion-fab-button {
+  --background: var(--theme-color);
+  --color: white;
+}
+
+.range-container {
+  display: flex;
+  align-items: center;
+}
+
+.range-container ion-label {
+  margin-right: 10px;
+}
+
+ion-range {
+  pointer-events: none;
+}
+
+ion-tab-bar{
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+}

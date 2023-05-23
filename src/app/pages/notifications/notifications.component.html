@@ -1,0 +1,50 @@
+<ion-header
+  class="md header-md header-collapse-none hydrated sticky iion-header header-height1 custom-height-header1"
+>
+  <ion-toolbar class="toolbar-title-default v-toolbar iion-toolbar" (click)="back()">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" ><ion-icon name="arrow-back"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title> Mes notifications </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="notification-page"> 
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid class="grid-notification">
+    <ion-item-sliding id="item100" *ngFor="let item of items"  #slidingItem>
+      <ion-item class="item-sliding">
+  
+        <ion-row class="notification-block">
+          <ion-col size="2" class="center-block">
+            <ion-icon name="notifications" class="notification-icon"></ion-icon>
+          </ion-col>
+          <ion-col size="10">
+            <ion-row>
+              <ion-col>
+                <h3>{{item.title}}</h3>
+                <p>{{item.created | date:'yyyy-MM-dd HH:mm'}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+          
+        
+      </ion-item>
+  
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteItem(item, slidingItem)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  
+    <div class="ion-text-center not-found-reservation" *ngIf="items.length === 0">
+      <ion-icon name="notifications" class="icon-notification"></ion-icon>
+      <h2 class="title">Aucun historique de notification</h2>
+      <p class="description">Vous n'avez pas de notification.</p>
+    </div>
+
+  </ion-grid>
+</ion-content>

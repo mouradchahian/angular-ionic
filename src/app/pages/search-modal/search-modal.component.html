@@ -1,0 +1,36 @@
+<ion-header class="box-shadow">
+  <ion-toolbar class="padding">
+    <ion-icon name="close" class="close-icon" slot="start" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar class="padding">
+    <ion-searchbar (ionInput)="onSearch($event)" class="custom-searchbar" clear-icon="trash-bin" placeholder="Rechercher" #searchBar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-content-white">
+  <br/>
+  <ion-title>
+    Dernière recherche
+  </ion-title>
+  <ion-item class="last-search">
+    <img src="assets/img/vehicle1.jpg"  width="40px" />
+    <ion-label class="last-label">Golf 7</ion-label>
+  </ion-item>
+  <ion-item class="last-search">
+    <img src="assets/img/vehicle2.jpg"  width="40px" />
+    <ion-label class="last-label">Audi a3</ion-label>
+  </ion-item>
+  <ion-item class="last-search">
+    <img src="assets/img/vehicle3.jpg"  width="40px" />
+    <ion-label class="last-label">Totyota corolla</ion-label>
+  </ion-item>
+  <ion-title>
+    Tags véhicule
+  </ion-title>
+  
+  <div class="tags-search">
+    <ion-chip *ngFor="let tag of tags" (click)="selectTag(tag)">
+      <ion-label>{{ tag }}</ion-label>
+    </ion-chip>
+  </div>
+  
+</ion-content>

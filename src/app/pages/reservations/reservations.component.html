@@ -1,0 +1,128 @@
+<ion-header
+  class="md header-md header-collapse-none hydrated sticky iion-header"
+>
+  <ion-toolbar
+    class="toolbar-title-default v-toolbar iion-toolbar reservation-title-toolbar" (click)="back()"
+  >
+  <ion-buttons slot="start">
+    <ion-button fill="clear"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  </ion-buttons>
+    <ion-avatar slot="start">
+      <img [src]="uploadedImage" class="img-profile" />
+    </ion-avatar>
+    <ion-title> Mes Réservations </ion-title>
+    <!--<ion-icon
+      slot="end"
+      name="notifications"
+      class="notification-header"
+    ></ion-icon>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="!content" class="loading">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div>
+    <ion-segment value="today" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="today" (click)="todayReservation()">
+        Aujourd'hui
+      </ion-segment-button>
+      <ion-segment-button value="all" (click)="allReservation()">
+        Tous
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+<div class=" reservation" *ngIf="content">
+  <ion-item-sliding id="item100" *ngFor="let item of items" #slidingItem>
+    <ion-item class="item-sliding">
+
+      <ion-grid class="background-reservation-item">
+        <ion-row class="header-reservation">
+          <ion-col size="6">
+            <ion-text class="font-date"><ion-icon class="icon" name="calendar"></ion-icon> {{ item.creation | date:'yyyy-MM-dd HH:mm' }}</ion-text>
+          </ion-col>
+          <ion-col size="6" class="ion-text-end " >
+            <div class="{{getStatusIcon(item.status)}}">
+              <ion-icon [name]="getStatusIcon(item.status)" class="custom-icon-res font-color-icon"></ion-icon>
+              <ion-text class="font-color">{{ item.status }}</ion-text>
+            </div>  
+          </ion-col>
+        </ion-row>
+      
+        <ion-row class=" item-center body-reservation">
+          <ion-col size="9" class="custom-position">
+            <ion-title>{{ item.car.title }}</ion-title>
+            <ion-row class="p-b-5 margin-top5">
+              <ion-col size="12" class="" >
+                <ion-icon name="hourglass" class="icon"></ion-icon>
+                <ion-text class="">{{ item.date }}</ion-text>
+                
+              </ion-col>
+              <ion-col size="6">
+                <ion-icon class="icon" name="location"></ion-icon> <ion-text class="font-date"> {{ item.lieu }}</ion-text>
+              </ion-col>
+
+              <ion-col size="6" class="" >
+                <ion-icon name="cash" class="icon i-pos"></ion-icon>
+                <ion-text class="font-bold">{{ item.car.price }} DH</ion-text>
+                
+              </ion-col>
+
+              <ion-label class="inline-position">{{ item.description }}</ion-label>
+              
+            </ion-row>
+            
+          </ion-col>
+          <ion-col size="3">
+            <img src="{{ item.car.image }}" alt="{{ item.description }}">
+          </ion-col>
+          
+          
+        </ion-row>
+
+
+
+      </ion-grid>
+      
+        
+      
+    </ion-item>
+    <div [hidden]="role != 'admin'">
+      <ion-item-options side="start">
+        <ion-item-option class="activer" (click)="changeStatus(item, true, 'Active', slidingItem)" *ngIf="!item.active">
+          <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+        </ion-item-option>
+        <ion-item-option class="desactiver" (click)="changeStatus(item, false, 'En cours', slidingItem)" *ngIf="item.active">
+          <ion-icon slot="icon-only" name="ban"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="showClientInfo(item, slidingItem)">
+          <ion-icon slot="icon-only" name="information-circle"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </div>
+    
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="deleteItem(item, slidingItem)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <div class="ion-text-center not-found-reservation" *ngIf="items.length == 0">
+    <ion-icon name="car-sport-outline" class="icon"></ion-icon>
+    <h2 class="title">Aucun historique de Reservation</h2>
+    <p class="description">Vous n'avez pas encore fait une reservation.</p>
+  </div>
+
+  <br/><br/>
+</div>
+</ion-content>
+
+
+

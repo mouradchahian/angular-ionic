@@ -1,0 +1,63 @@
+<ion-header
+class="md header-md header-collapse-none hydrated sticky iion-header header-height1 custom-height-header1"
+>
+<ion-toolbar class="toolbar-title-default v-toolbar iion-toolbar" (click)="back()">
+  <ion-buttons slot="start">
+    <ion-button fill="clear"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  </ion-buttons>
+  <ion-title> Mon filtre </ion-title>
+</ion-toolbar>
+</ion-header>
+<ion-content class="ion-content-white">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="margin-custom-container">
+    <ion-item class="filter-item-filter">
+      <ion-label>Marque</ion-label>
+      <ion-select [(ngModel)]="selectedBrand" multiple="true" cancelText="Annuler" okText="Ok" class="select-rightf">
+        <ion-select-option *ngFor="let brand of brands" [value]="brand.id">
+          {{ brand.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item class="filter-item-filter">
+      <ion-label>Type de carburant</ion-label>
+      <ion-select [(ngModel)]="selectedFuelType" class="select-rightf" multiple="true" cancelText="Annuler" okText="Ok">
+        <ion-select-option *ngFor="let fuelType of fuelTypes" [value]="fuelType.id">
+          {{ fuelType.name }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <!--<ion-item class="filter-item-filter">
+      <ion-label>Prix</ion-label>
+      <ion-range [(ngModel)]="selectedPrice" pin="true" dualKnobs="true" min="0" max="2500" class="filter-range">
+        <ion-label range-left slot="start">{{selectedPrice.lower}} MAD</ion-label>
+        <ion-label range-right slot="end">{{selectedPrice.upper}} MAD</ion-label>
+      </ion-range>
+    </ion-item>-->
+
+    <ion-item class="filter-item-filter">
+      <ion-label>Caractéristiques</ion-label>
+      <ion-checkbox-group (ngModel)="selectedFeatures">
+        <ion-item *ngFor="let fe of features" class="checkbox-item">
+          <ion-label >{{fe.name}}</ion-label>
+          <ion-checkbox  value="option" name="{{fe.id}}" (ionChange)="checkedd($event, fe.id)" [checked]="checkIfSelected(fe.id)" name="option" slot="end"></ion-checkbox>
+       </ion-item>
+      </ion-checkbox-group>
+    </ion-item>
+  <br/>
+    <ion-row class="">
+      <ion-col size="12" class="remove-padding">
+        <ion-button class="ion-bttom-appl4" (click)="applyFilter()"><ion-icon class="ico-login" name="funnel"></ion-icon> Appliquer filter</ion-button>
+      </ion-col>
+      <ion-col size="12" class="remove-padding">
+        <ion-button class="ion-bttom-appl5" (click)="removeFilter()"><ion-icon class="ico-login" name="close-circle-outline"></ion-icon> Supprimer filter</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>
+

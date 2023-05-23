@@ -1,0 +1,308 @@
+<ion-header class="md header-md header-collapse-none hydrated">
+  <ion-toolbar class="toolbar-title-default">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="closeModal()"
+        ><ion-icon name="chevron-back-outline"></ion-icon></ion-button
+      ><ion-title>Détail page</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="detail">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="image-container">
+    <img [src]="car.image" alt="Image" />
+  </div>
+
+  <ion-card class="d-description custom-height-detail">
+    <ion-card-header class="no-padding">
+      <ion-card-title class="d-description-title">
+        <h4>Détails de l'offre</h4>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row class="detail">
+        <ion-col size="12">
+          <ion-text> {{car.description}}</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="d-description m-t-5">
+    <ion-card-header class="no-padding">
+      <ion-card-title class="d-description-title">
+        <h4>Détails supplémentaires</h4>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="detail">
+      <ion-row >
+        <ion-col size="6">
+          <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+          <ion-text class="text-detail"> {{car.passagers}} Passagers</ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+          <ion-text class="text-detail"> {{car.valise}} Valise</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+          <ion-text class="text-detail"> {{findType(car.type).name}}</ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-icon name="checkmark-outline" class="checkmark"></ion-icon>
+          <ion-text class="text-detail"> {{car.portes}} Portes</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+  class="ion-bttom-appl6"
+  id="open-modal"
+  ><ion-icon name="car-outline" slot="start"></ion-icon>
+  Réserver maintenant</ion-button>
+
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header class="md header-md header-collapse-none hydrated sticky iion-header">
+        <ion-toolbar class="toolbar-title-default">
+          <ion-buttons slot="start">
+            <ion-button fill="clear" (click)="closeModal()"
+              ><ion-icon name="chevron-back-outline"></ion-icon></ion-button
+            ><ion-title>Réservation formulaire</ion-title>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding reservation-formulaire ion-content-white">
+        <div class="center">
+          <img src="assets/img/logo.png" class="img-center" />
+        </div>
+        <form [formGroup]="reservationForm" class="no-margin-padding">
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-icon
+                  class="icon"
+                  name="person-outline"
+                  item-right
+                  slot="end"
+                ></ion-icon>
+                <ion-input
+                  placeholder="Nom"
+                  formControlName="nom"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item>
+                <ion-icon
+                  class="icon"
+                  name="person-outline"
+                  item-right
+                  slot="end"
+                ></ion-icon>
+                <ion-input
+                  placeholder="Prenom"
+                  formControlName="prenom"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-icon class="icon" name="mail-outline" item-right slot="end"></ion-icon>
+                <ion-input
+                  placeholder="Email"
+                  formControlName="email"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item>
+                <ion-icon class="icon" name="call-outline" item-right slot="end"></ion-icon>
+                <ion-input
+                  placeholder="Téléphone"
+                  type="tel"
+                  formControlName="tel"
+                  required
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-icon class="icon" name="car-outline" item-right slot="end"></ion-icon>
+                <ion-select
+                  okText="Choisir"
+                  class="select"
+                  cancelText="Annuler"
+                  placeholder="Le lieu"
+                  formControlName="lieu"
+                >
+                  <ion-select-option value="casablanca"
+                    >Casablanca</ion-select-option
+                  >
+                  <ion-select-option value="marrakech"
+                    >Marrakech</ion-select-option
+                  >
+                  <ion-select-option value="rabat">Rabat</ion-select-option>
+                  <ion-select-option value="tanger">Tanger</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item>
+                <ion-icon class="icon" name="calendar-outline" item-right slot="end"></ion-icon>
+                <ion-input
+                  placeholder="La date"
+                  formControlName="date"
+                  required
+                  (click)="openCalendar()"
+                  readonly
+                  [(ngModel)]="label"
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12">
+              <ion-button
+                class="ion-bttom-appl2"
+                (click)="reserver()"
+                [disabled]="!reservationForm.valid"
+                ><ion-icon name="car-outline" slot="start"></ion-icon>
+                Réserver</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+  
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!--<ion-card class="d-description">
+    <ion-card-header>
+      <ion-card-title class="d-description-title">
+        <h4>Faire une Réservation</h4>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="reservationForm" class="no-margin-padding">
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon
+                class="icon"
+                name="person-outline"
+                item-right
+              ></ion-icon>
+              <ion-input
+                placeholder="Nom"
+                formControlName="nom"
+                required
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon
+                class="icon"
+                name="person-outline"
+                item-right
+              ></ion-icon>
+              <ion-input
+                placeholder="Prenom"
+                formControlName="prenom"
+                required
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon class="icon" name="mail-outline" item-right></ion-icon>
+              <ion-input
+                placeholder="Email"
+                formControlName="email"
+                required
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon class="icon" name="call-outline" item-right></ion-icon>
+              <ion-input
+                placeholder="Téléphone"
+                type="tel"
+                formControlName="tel"
+                required
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon class="icon" name="car" item-right></ion-icon>
+              <ion-select
+                okText="Choisir"
+                class="select"
+                cancelText="Annuler"
+                placeholder="Le lieu"
+                formControlName="lieu"
+              >
+                <ion-select-option value="casablanca"
+                  >Casablanca</ion-select-option
+                >
+                <ion-select-option value="marrakech"
+                  >Marrakech</ion-select-option
+                >
+                <ion-select-option value="rabat">Rabat</ion-select-option>
+                <ion-select-option value="tanger">Tanger</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon class="icon" name="calendar" item-right></ion-icon>
+              <ion-input
+                placeholder="La date"
+                formControlName="date"
+                required
+                (click)="openCalendar()"
+                readonly
+                [(ngModel)]="label"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button
+              class="ion-bttom-appl2"
+              (click)="reserver()"
+              [disabled]="!reservationForm.valid"
+              ><ion-icon name="car-outline" slot="start"></ion-icon>
+              Réserver</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>-->
+</ion-content>

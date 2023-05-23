@@ -1,0 +1,60 @@
+<ion-header
+  class="md header-md header-collapse-none hydrated sticky iion-header"
+>
+  <ion-toolbar
+    class="toolbar-title-default v-toolbar iion-toolbar reservation-title-toolbar" (click)="back()"
+  >
+  <ion-buttons slot="start">
+    <ion-button fill="clear"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  </ion-buttons>
+    <ion-avatar slot="start">
+      <img [src]="uploadedImage" class="img-profile" />
+    </ion-avatar>
+    <ion-title> List des voitures </ion-title>
+    <!--<ion-icon
+      slot="end"
+      name="notifications"
+      class="notification-header"
+    ></ion-icon>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-content-white">
+  <div class="div-table">
+    <ion-button fill="solid" size="large" slot="start" class="add" (click)="addCar()">
+      <ion-icon name="add" slot="start"></ion-icon>
+      Ajouter
+    </ion-button>
+    <table class="my-table">
+      <thead class="my-table headers">
+        <tr>
+          <th>id</th>
+          <th>Image</th>
+          <th>Titre</th>
+          <th>Prix</th>
+          <th>Opr</th>
+        </tr>
+      </thead>
+      <tbody class="my-table body">
+        <tr my-active *ngFor="let row of cars; index as rowIndex">
+          <td (click)="onSelect(rowIndex)"  [ngClass]="{index: i === (5 - 1) }">{{rowIndex + 1}}</td>
+          <td (click)="onSelect(rowIndex)"  [ngClass]="{index: i === (5 - 1) }"><img [src]="row.image" class="img-width" /></td>
+          <td (click)="onSelect(rowIndex)"  [ngClass]="{index: i === (5 - 1) }">{{row.title}}</td>
+          <td (click)="onSelect(rowIndex)"  [ngClass]="{index: i === (5 - 1) }">{{row.price}} DH</td>
+          <td class=""> <div class="flex-button"><button ion-button color="primary" class="edit" (click)="editCar(row)"> <ion-icon name="pencil"></ion-icon></button> <button ion-button color="primary" class="delete" (click)="deleteItem(row)"><ion-icon name="trash"></ion-icon></button></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <!--<div class="pag-space">
+      <button type="button" class="pag-button" (click)="changePage(0)"> << </button>
+      <button type="button" class="pag-button" (click)="changePage(this.pageNumber - 1)"> < </button>
+      <select class="size-page" [(ngModel)]="size" (change)="changePage(this.pageNumber)">
+        <option selected value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+      <button type="button" class="pag-button" (click)="changePage(this.pageNumber + 1)"> > </button>
+      <button type="button" class="pag-button" (click)="changePage(this.data.lastPage)"> >> </button>
+    </div>-->
+  </div>
+</ion-content>

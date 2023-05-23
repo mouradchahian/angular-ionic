@@ -1,0 +1,28 @@
+
+
+<ion-content class="ion-content-white">
+  <div class="container c2">
+    <ion-title class="title-1">Une envie ?</ion-title>
+    <ion-title class="title-2">Une voiture.</ion-title>
+    <div class="home">
+      <h2 class="start-t">Trouvez un Auto</h2>
+      <ion-item class="custom-home">
+        <label class="label-location">Adresse de location</label>
+        <ion-icon class="icon" name="location-outline" item-right></ion-icon>
+        <ion-select okText="Choisir" class="select" cancelText="Annuler" [(ngModel)]="lieu">
+          <ion-select-option value="default" selected>Choisir le lieu</ion-select-option>
+          <ion-select-option value="casablanca">Casablanca</ion-select-option>
+          <ion-select-option value="marrakech">Marrakech</ion-select-option>
+          <ion-select-option value="rabat">Rabat</ion-select-option>
+          <ion-select-option value="tanger">Tanger</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="custom-home-dates">
+        <label class="label-dates">Dates de location</label>
+        <ion-icon class="icon" name="calendar-outline" item-right></ion-icon>
+        <ion-input [(ngModel)]="date" [value]="date" required (click)="openCalendar()" readonly></ion-input>
+      </ion-item>
+      <ion-button class="ion-bttom-appl2" (click)="loadVehicles()"><ion-icon slot="start" name="search-outline"></ion-icon> Rechercher</ion-button>
+    </div>
+  </div>
+</ion-content>

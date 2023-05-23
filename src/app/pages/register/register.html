@@ -1,0 +1,141 @@
+<ion-header class="box-shadow">
+  <ion-toolbar class="padding">
+    <ion-icon
+      name="close"
+      class="close-icon"
+      slot="start"
+      (click)="dismiss()"
+    ></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar class="padding-top-5">
+    <ion-title> Créer compte</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-content-white form-formulaire">
+  <div class="center">
+    <img src="assets/img/logo.png" class="img-center" />
+  </div>
+  <form [(formGroup)]="registerForm">
+    <ion-row>
+      <ion-col size="12" class="remove-padding">
+        <ion-item class="ion-content-white margin-0">
+          <ion-input
+            placeholder="Nom"
+            class="custom-input-login"
+            formControlName="nom"
+            required
+          ></ion-input>
+          <ion-icon
+            class="icon"
+            name="person-outline"
+            class="icon-right-login"
+            item-right
+          ></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" class="remove-padding">
+        <ion-item class="ion-content-white margin-0">
+          <ion-input
+            placeholder="Prénom"
+            class="custom-input-login"
+            formControlName="prenom"
+            required
+          ></ion-input>
+          <ion-icon
+            class="icon"
+            name="person-outline"
+            class="icon-right-login"
+            item-right
+          ></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="remove-padding">
+        <ion-item class="ion-content-white margin-0">
+          <ion-input
+            placeholder="Email"
+            class="custom-input-login"
+            formControlName="email"
+            type="mail"
+          ></ion-input>
+          <ion-icon
+            class="icon"
+            name="mail"
+            class="icon-right-login"
+            item-right
+          ></ion-icon>
+        </ion-item>
+        <ion-item *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].touched)" class="invalid-pass">
+          <div >
+            <div *ngIf="registerForm.controls['email'].errors.required">Email est requis</div>
+            <div *ngIf="registerForm.controls['email'].errors.email">Email invalide</div>
+          </div>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" class="remove-padding">
+        <ion-item class="ion-content-white margin-0">
+          <ion-input
+            placeholder="Téléphone"
+            class="custom-input-login"
+            type="tel"
+            formControlName="tel"
+            required
+          ></ion-input>
+          <ion-icon
+            class="icon"
+            name="call"
+            class="icon-right-login"
+            item-right
+          ></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="remove-padding">
+        <ion-item class="ion-content-white margin-0">
+          <ion-input
+            placeholder="Mot de passe"
+            class="custom-input-login"
+            type="password"
+            formControlName="password"
+            minlength="8"
+            (keyup.enter)="onLogin()"
+            required
+          ></ion-input>
+          <ion-icon
+            class="icon"
+            name="lock-closed"
+            class="icon-right-login"
+            item-right
+          ></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-item *ngIf="registerForm.controls['password'].invalid && registerForm.controls.password.touched" class="invalid-pass">
+      <div
+        
+      >
+        <div *ngIf="registerForm.controls.password.errors.required">
+          Password est requis.
+        </div>
+        <div *ngIf="registerForm.controls.password.errors.minlength">
+          Password doit contenir au moins 8 caractère .
+        </div>
+      </div>
+    </ion-item>
+    <ion-row>
+      <ion-col size="12" class="padding-15">
+        <ion-button
+          class="ion-bttom-appl4"
+          [disabled]="!registerForm.valid"
+          (click)="onLogin()"
+          ><ion-icon name="person-add" class="ico-login"></ion-icon> Créer
+          Compte</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

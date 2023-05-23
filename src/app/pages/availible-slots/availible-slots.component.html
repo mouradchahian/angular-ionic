@@ -1,0 +1,20 @@
+<ion-header class="box-shadow">
+  <ion-toolbar class="padding" (click)="dismiss()">
+    <ion-icon name="close" class="close-icon" slot="start"></ion-icon>
+  </ion-toolbar>
+  <ion-toolbar class="padding-top-5">
+    <ion-title> Réservation Annuler sur {{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-content-white">
+  <br/>
+  <ion-title> Créneaux disponibles</ion-title>
+  <ion-row *ngFor="let slot of availableIntervals">
+    
+    <ion-col size="auto" class="padding-slot" (click)="reserver(slot)">
+      
+      <ion-icon name="calendar" class="icon" ></ion-icon> <ion-label> {{slot.startDate | date:'dd MMM yyyy'}} - {{slot.endDate | date:'dd MMM yyyy'}}</ion-label>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>

@@ -9,13 +9,14 @@ important parts :
 - location service
 
 # Pre-requisites
-- JDK 1.8 or later
-- Maven 3 or later
+- JDK 11 or later
 - Capacitor 4 or later
+- node v18.16.0
+- Java 11.0.19
+- ionic 7.0.1
 
 # Technologies 
-- Java 8
-- Maven
+- Java
 - Angular ionic
 - Capacitor
 - Symfony
@@ -28,13 +29,14 @@ important parts :
 - Github
 - Post man
 - Json server
-- Apache
 
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:
 - $ npm install
-- ionic capacitor sync
+- npx cap add android
+- npx cap add ios
+- npx cap sync
 - $ ionic cap run android --external -livereload
 
 # version 

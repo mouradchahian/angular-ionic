@@ -14,6 +14,7 @@ important parts :
 - node v18.16.0
 - Java 11.0.19
 - ionic 7.0.1
+- Angular CLI 15.2.6
 
 # Technologies 
 - Java

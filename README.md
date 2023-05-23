@@ -34,11 +34,12 @@ important parts :
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:
-- $ npm install
+- run json server (this is a version demo with angular) : json-server --host 192.168.1.10 db.json --watch
+- npm install
 - npx cap add android
 - npx cap add ios
 - npx cap sync
-- $ ionic cap run android --external -livereload
+- ionic cap run android --external -livereload
 
 # version 
  v1.0

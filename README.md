@@ -34,7 +34,7 @@ important parts :
 # Instalation 
 Here,we used ionic capacitor
 Project Installation Steps:
-- run json server (this version demo angular) : json-server --host 192.168.1.10 db.json --watch
+- run json server (this is a version demo with angular) : json-server --host 192.168.1.10 db.json --watch
 - npm install
 - npx cap add android
 - npx cap add ios

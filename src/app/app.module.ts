@@ -51,7 +51,8 @@ registerLocaleData(localeFr);
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorIntercept,
-      multi: true
+      multi: true,
+      deps:[AlertController]
     },
     InAppBrowser,
     Camera,

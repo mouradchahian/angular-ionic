@@ -10,7 +10,6 @@ import { AlertController } from '@ionic/angular';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-@Injectable()
 export class ErrorIntercept implements HttpInterceptor {
     constructor(private alertController: AlertController) {}
     intercept(

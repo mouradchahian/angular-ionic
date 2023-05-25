@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserOptions } from '../../interfaces/user-options';
+import { UserOptions } from '../../shared/interfaces/user-options';
 import {
   AlertController,
   ModalController,
   NavController,
   ToastController,
 } from '@ionic/angular';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../shared/services/user.service';
 import { LoginPage } from '../login/login';
 import { Plugins } from '@capacitor/core';
 const { Keyboard } = Plugins;

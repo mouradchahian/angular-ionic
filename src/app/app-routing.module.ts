@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReservationsComponent } from './pages/reservations/reservations.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { FilterPageComponent } from './pages/filter-page/filter-page.component';
-import { AuthGuard } from './providers/authGuard.service';
+import { AuthGuard } from './shared/providers/authGuard.service';
 import { VehicleComponent } from './pages/admin/vehicle/vehicle.component';
 
 const routes: Routes = [
@@ -51,13 +51,13 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'vehicles',
-    loadChildren: () => import('./pages/vehicles/vehicles.module').then(m => m.VehiclesModule)
+    path: 'cars-filter',
+    loadChildren: () => import('./pages/cars-filter/cars-filter.module').then(m => m.CarsFilterModule)
   }
   ,
   {
-    path: 'vehicles-detail',
-    loadChildren: () => import('./pages/vehiclesDetail/vehiclesDetail.module').then(m => m.vehiclesDetailModule)
+    path: 'cars-detail',
+    loadChildren: () => import('./pages/cars-detail/cars-detail.module').then(m => m.CarsDetailModule)
   }
 ];
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, ModalController } from '@ionic/angular';
-import { FilterService } from '../../../../service/filter.service';
-import { CarsService } from '../../../../service/cars.service';
+import { FilterService } from '../../../../shared/services/filter.service';
+import { CarsService } from '../../../../shared/services/cars.service';
 
 import { Plugins } from '@capacitor/core';
 const {  Keyboard } = Plugins;

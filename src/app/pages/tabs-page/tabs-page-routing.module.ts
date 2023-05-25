@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs-page';
 import { SchedulePage } from '../schedule/schedule';
-import { AuthGuard } from '../../providers/authGuard.service';
+import { AuthGuard } from '../../shared/providers/authGuard.service';
 
 
 const routes: Routes = [
@@ -16,23 +16,6 @@ const routes: Routes = [
           {
             path: '',
             component: SchedulePage,
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
-          }
-        ]
-      },
-      {
-        path: 'speakers',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../speaker-list/speaker-list.module').then(m => m.SpeakerListModule)
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
           }
         ]
       },
@@ -56,29 +39,20 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'contact',
+        path: 'cars-list',
         children: [
           {
             path: '',
-            loadChildren: () => import('../contact/contact.module').then(m => m.ContactModule)
+            loadChildren: () => import('../cars-list/cars-list.module').then(m => m.CarsListModule)
           }
         ]
       },
       {
-        path: 'vehicles',
+        path: 'cars-detail',
         children: [
           {
             path: '',
-            loadChildren: () => import('../vehiclesPage/vehicles.module').then(m => m.VehicleModule)
-          }
-        ]
-      },
-      {
-        path: 'vehiclesDetail',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../vehiclesDetail/vehiclesDetail.module').then(m => m.vehiclesDetailModule)
+            loadChildren: () => import('../cars-detail/cars-detail.module').then(m => m.CarsDetailModule)
           }
         ]
       },

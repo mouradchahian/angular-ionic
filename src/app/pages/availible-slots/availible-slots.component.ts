@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { vehiclesDetailPage } from '../vehiclesDetail/vehiclesDetail';
+import { CarsDetailPage } from '../cars-detail/cars-detail';
 
 @Component({
   selector: 'app-availible-slots',
@@ -42,7 +42,7 @@ export class AvailibleSlotsComponent  implements OnInit {
     const from = formatDate(dateSt, format, locale);
     const to = formatDate(dateEn, format, locale);
     const vehicles = await this.modalController.create({
-      component: vehiclesDetailPage,
+      component: CarsDetailPage,
       componentProps: {
         label:from + ' - ' + to,
         dateOriginal: intervalCreneux,

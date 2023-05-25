@@ -2,11 +2,11 @@ import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StatusBar } from '@capacitor/status-bar';
 import { AlertController, IonItemSliding, ModalController, Platform } from '@ionic/angular';
-import { ReservationService } from '../../service/reservation.service';
+import { ReservationService } from '../../shared/services/reservation.service';
 import { ReservationInfoComponent } from '../reservation-info/reservation-info.component';
 import { Router } from '@angular/router';
-import { UserService } from '../../service/user.service';
-import { NotificationService } from '../../service/notification.service';
+import { UserService } from '../../shared/services/user.service';
+import { NotificationService } from '../../shared/services/notification.service';
 import { ActionPerformed, PushNotificationSchema, PushNotifications, Token } from '@capacitor/push-notifications';
 
 @Component({

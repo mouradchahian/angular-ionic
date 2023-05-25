@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { CarsListPage } from './cars-list';
+import { CarsListRoutingModule } from './cars-list-routing.module';
 
-import { AboutPage } from './about';
-import { AboutPageRoutingModule } from './about-routing.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         IonicModule,
-        AboutPageRoutingModule
+        CarsListRoutingModule
     ],
-    declarations: [AboutPage],
-    bootstrap: [AboutPage]
+    declarations: [CarsListPage],
+    bootstrap: []
 })
-export class AboutModule {}
+export class CarsListModule {}

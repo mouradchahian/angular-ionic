@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -27,6 +27,7 @@ import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { ErrorIntercept } from './shared/providers/error.interceptor';
 registerLocaleData(localeFr);
 @NgModule({
   imports: [
@@ -47,6 +48,11 @@ registerLocaleData(localeFr);
   declarations: [AppComponent],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    },
     InAppBrowser,
     Camera,
     File,
@@ -79,6 +85,5 @@ export class AppModule {
         autoHide: true,
       });
     }
-    
   }
 }

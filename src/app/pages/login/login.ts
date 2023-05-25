@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserOptions } from '../../interfaces/user-options';
+import { UserOptions } from '../../shared/interfaces/user-options';
 import { ModalController, NavController, ToastController } from '@ionic/angular';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../shared/services/user.service';
 import { RegisterPage } from '../register/register';
 
 import { Plugins } from '@capacitor/core';

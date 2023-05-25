@@ -1,0 +1,73 @@
+<ion-header class="md header-md header-collapse-none hydrated sticky iion-header">
+  <ion-toolbar class="toolbar-title-default v-toolbar iion-toolbar">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="closeModal()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-label class="time-label">
+      {{label}}
+    </ion-label>
+    <ion-icon name="options-outline" class="filter" slot="end" (click)="closeModal()" [routerLink]="'/filter'"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="!content" class="loading">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <ion-grid *ngIf="content" class="m-t-10">
+    <ion-grid class="background-cars-panel" *ngFor="let car of carsList">
+      <ion-row class="header-cars">
+        <ion-col size="8">
+          <ion-title class="header-title"> {{car.title}}</ion-title>
+        </ion-col>
+        <ion-col size="4" class="ion-text-end" >
+          <div class="status-cars">
+            <ion-text class="label-color"><ion-icon name="checkmark-circle-outline" class="icon-dis"></ion-icon> Disponible</ion-text>
+          </div>  
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="text-center padding-left">
+          <img [src]="car.image" class="img-car">
+          <div class="price-div">
+            <ion-label class="price-label-1">{{car.price}} DH</ion-label>
+            <ion-label class="price-label-2">par jour</ion-label>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="padding-left-15">
+          <ul class="list-car-ul">
+            <li *ngFor="let feature of findFeeatures(car.feature)"> <ion-icon name="custom-dot"></ion-icon> {{feature.name}}</li>
+          </ul>
+          <ion-button class="custom-button" (click)="detail(car)"><ion-icon name="car-outline" slot="start" class="font-button"></ion-icon> Réserver</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="footer-row">
+        <ion-col size="auto" class="footer-col">
+          <div class="features">
+            <i class="fas fa-gas-pump custom-icons" ></i> {{findType(car.type)?.name}}
+          </div>
+          <div class="features">
+            <ion-icon name="briefcase-outline"></ion-icon> {{car.valise}} valise
+          </div>
+          <div class="features">
+            <ion-icon name="exit-outline"></ion-icon> {{car.portes}} portes
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ion-text-center not-found-reservation" *ngIf="carsList.length == 0">
+      <ion-icon name="car-sport-outline" class="icon"></ion-icon>
+      <h2 class="title">Aucun Voitures disponible</h2>
+      <p class="description">Merci de changer les filter et ressayer.</p>
+    </div>
+  <br/>
+  </ion-grid>
+</ion-content>

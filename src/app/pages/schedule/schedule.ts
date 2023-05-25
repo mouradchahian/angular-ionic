@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, AfterViewChecked } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-
-import {
-  CalendarResult
-} from 'ion2-calendar';
-import { VehiclesPage } from '../vehicles/vehicles';
-import { customCalendar } from '../../service/customCalendar';
+import { CalendarResult } from 'ion2-calendar';
+import { customCalendar } from '../../shared/services/customCalendar';
 import { Router } from '@angular/router';
+import { CarsFilterPage } from '../cars-filter/cars-filter';
+import { ToastService } from '../../shared/services/toast.service';
 
 @Component({
   selector: 'page-schedule',
@@ -14,15 +12,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./schedule.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class SchedulePage implements OnInit, AfterViewChecked {
   date: string = "Choisir dates";
   dateOriginal: CalendarResult;
   lieu:string = 'default';
   constructor(
     private modalCtrl: ModalController,
-    private toastCtrl: ToastController,
     private customCalendar: customCalendar,
-    private router: Router
+    private router: Router,
+    private toastService: ToastService
   ) { }
 
   ngAfterViewChecked() {
@@ -40,30 +39,21 @@ export class SchedulePage implements OnInit, AfterViewChecked {
   ngOnInit() {}
 
   async loadVehicles(){
-    if((this.lieu == "default" ) || (this.date == "Choisir dates"))
+    if((this.lieu != "default" ) || (this.date != "Choisir dates"))
     {
-      const toast = await this.toastCtrl.create({
-        message: 'Merci de séléctionner un filter pour procédurer!!!',
-        duration: 3000,
-        cssClass: 'warning-toast',
-        color:'warning',
-        icon:'warning'
+      const vehicles = await this.modalCtrl.create({
+        component: CarsFilterPage,
+        componentProps: {
+          title:this.lieu,
+          label:this.date,
+          dateOriginal: this.customCalendar.dateOriginal
+        }
       });
-    
-      toast.present();
-      return;
+  
+      return vehicles.present();
     }
-    const vehicles = await this.modalCtrl.create({
-      component: VehiclesPage,
-      componentProps: {
-        title:this.lieu,
-        label:this.date,
-        dateOriginal: this.customCalendar.dateOriginal
-      }
-    });
 
-    vehicles.present();
-
+    this.toastService.showError('Merci de séléctionner un filter pour procédurer!!!');
   }
 
   ionViewWillEnter() {

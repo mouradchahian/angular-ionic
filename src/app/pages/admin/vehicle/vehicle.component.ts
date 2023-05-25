@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CarsService } from '../../../service/cars.service';
+import { CarsService } from '../../../shared/services/cars.service';
 import { AlertController, Config, ModalController } from '@ionic/angular';
 import { DataTable } from '../interface/datatable';
 import { PageRequest } from '../interface/pageRequest';

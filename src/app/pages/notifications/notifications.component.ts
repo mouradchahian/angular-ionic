@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationService } from '../../service/notification.service';
+import { NotificationService } from '../../shared/services/notification.service';
 import { AlertController, IonItemSliding } from '@ionic/angular';
 
 @Component({

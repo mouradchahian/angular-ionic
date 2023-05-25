@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { FilterService } from '../../service/filter.service';
+import { FilterService } from '../../shared/services/filter.service';
 import Swal from 'sweetalert2';
 
 @Component({

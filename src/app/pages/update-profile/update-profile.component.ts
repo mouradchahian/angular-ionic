@@ -8,7 +8,7 @@ import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ng
 import { AlertController, Platform } from '@ionic/angular';
 import { StatusBar } from '@capacitor/status-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../service/user.service';
+import { UserService } from '../../shared/services/user.service';
 import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 const { Keyboard } = Plugins;

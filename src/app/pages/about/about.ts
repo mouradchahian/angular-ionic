@@ -10,7 +10,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AboutPage {
 
-
   constructor(public popoverCtrl: PopoverController, private platform: Platform, private statusBar: StatusBar) {
     this.initializeApp();
    }
